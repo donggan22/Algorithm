@@ -29,4 +29,4 @@ public:
         return ans;
     }
 };
-//Time Capacity : 2*height.size() + C
+//Time complexity : 2*height.size() + C
