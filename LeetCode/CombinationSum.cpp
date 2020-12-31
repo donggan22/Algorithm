@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector < vector<int>> dp[501];
@@ -31,4 +31,29 @@ public:
     }
 };
 
-//문제 해결법으로 재귀, dp를 생각했는데 dp가 훨씬 빠를 줄 알고 풀어봤는데 시간복잡도나 공간복잡도나 엉망이다. 잘못 푼거같다 다시 풀어보기.
+vector<vector <int>> ans;
+void recursive(int sum,int target, int idx, vector<int>& list, vector<int>& candidates)
+{
+    if (sum == target)
+        ans.push_back(list);
+    for (int i = idx; i < candidates.size(); i++)
+    {
+        if (sum + candidates[i] <= target)
+        {
+            list.push_back(candidates[i]);
+            recursive(sum + candidates[i],target, i, list, candidates);
+            list.pop_back();
+        }
+    }
+    return;
+}
+
+class Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        ans.clear();
+        vector<int> list;
+        recursive(0, target, 0, list, candidates);
+        return ans;
+    }
+};
