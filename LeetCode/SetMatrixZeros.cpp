@@ -37,7 +37,7 @@ public:
 
 /* sol 2) Trying to use <unordered_set> data structure
  * O(M+N) Space complexity
-*/
+
 
 class Solution {
 public:
@@ -66,4 +66,40 @@ public:
             }
         }
     }
+};*/
+
+/* sol 3) no use more sapce
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        bool rowZero = false;
+        bool colZero = false;
+        for(int row = 0 ;row < matrix.size() ; row++)
+        {
+            for(int col = 0 ; col< matrix[0].size(); col++)
+            {
+                if(row == 0 && matrix[row][col] == 0)
+                    rowZero = true;
+                if(col == 0 && matrix[row][col] == 0)
+                    colZero = true;
+                if(matrix[row][col] == 0)
+                    matrix[0][col] = matrix[row][0] = 0;
+            }
+        }
+        for(int row = 1 ; row < matrix.size();row++)
+        {
+            for(int col = 1 ;col < matrix[0].size();col++)
+            {
+                if(matrix[0][col] == 0 || matrix[row][0] == 0)
+                    matrix[row][col] = 0;
+            }
+        }
+        if(rowZero)
+            for(int col = 0 ; col < matrix[0].size(); col++)
+                matrix[0][col] = 0;
+        if(colZero)
+            for(int row = 0 ; row < matrix.size(); row++)
+                matrix[row][0] = 0;
+    }
 };
+ */
